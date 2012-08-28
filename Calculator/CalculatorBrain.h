@@ -12,7 +12,7 @@
 
 -(void) pushOperand: (double) operand;
 -(double) performOperation: (NSString *)operation;
--(void) clear;
+-(void) clear;;
 
 @property (nonatomic, readonly) id program;
 

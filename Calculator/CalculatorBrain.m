@@ -120,4 +120,11 @@
     return [self popOperandOffProgramStack:stack];
 }
 
++(double)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues
+{
+    double result = 0;
+    
+    return result;
+}
+
 @end

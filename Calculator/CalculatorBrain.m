@@ -33,11 +33,6 @@
     return [self.programStack copy];
 }
 
-+ (NSString *)descriptionOfProgram:(id)program
-{
-    return @"Implement this in Homework #2";
-}
-
 -(void) clear
 {
     [self.programStack removeAllObjects];
@@ -140,6 +135,127 @@
     }
     
     return [self popOperandOffProgramStack:stack usingVariableValues:variableValues];
+}
+
++(NSSet *)variablesUsedInProgram: (id)program
+{
+    NSMutableArray *arrayOfVariables = [[NSMutableArray alloc] init];
+    
+    if([program isKindOfClass:[NSArray class]])
+    {
+        for (id element in program)
+        {
+            if([element isKindOfClass:[NSString class]])
+            {
+                if(![self isOperation:element])
+                {
+                    [arrayOfVariables addObject:element];
+                }
+            }
+        }
+    }
+    
+    if([arrayOfVariables count] == 0)
+    {
+        return nil;
+    }
+    
+    return [[NSSet alloc] initWithArray:arrayOfVariables];
+}
+
++ (NSString *)descriptionOfProgram:(id)program
+{
+    NSMutableArray *stack;
+    NSString *result = @"";
+    
+    if ([program isKindOfClass:[NSArray class]]) {
+        stack = [program mutableCopy];
+        
+        while (YES)
+        {
+            NSString *operandDescription = [self popOperandDescriptionOffTheStack:stack];
+            
+            if(operandDescription == nil)
+            {
+                break;
+            }
+            
+            if(result.length > 0)
+            {
+                result = [result stringByAppendingFormat:@", %@", operandDescription];
+            }
+            else
+            {
+                result = operandDescription;
+            }
+        }
+    }
+    
+    return result;
+}
+
++(NSString *)popOperandDescriptionOffTheStack:(NSMutableArray *)programStack
+{
+    NSString *result = nil;
+    id topOfStack = [programStack lastObject];
+    if(topOfStack) [programStack removeLastObject];
+    
+    if ([topOfStack isKindOfClass:[NSNumber class]])
+    {
+        result = [topOfStack description];
+    }
+    else if([self isTwoOperandOperation:topOfStack] && programStack.count >= 2)
+    {
+        NSString *firstOperand = [self popOperandDescriptionOffTheStack:programStack];
+        NSString *secondOperand = [self popOperandDescriptionOffTheStack:programStack];
+        
+        if(firstOperand && secondOperand)
+        {
+            result = [[NSString alloc] initWithFormat:@"(%@ %@ %@)", firstOperand, topOfStack, secondOperand];
+        }
+    }
+    else if([self isSingleOperandOperation:topOfStack] && programStack.count >= 1)
+    {
+        NSString *firstOperand = [self popOperandDescriptionOffTheStack:programStack];
+        
+        if(firstOperand)
+        {
+            result = [[NSString alloc] initWithFormat:@"%@(%@)", topOfStack, firstOperand];
+        }
+    }
+    else if([self isNoOperandOperation:topOfStack])
+    {
+        result = topOfStack;
+    }
+    
+    return result;
+}
+
++(BOOL)isOperation: (NSString *)operation
+{
+    return [self isTwoOperandOperation:operation] ||
+           [self isSingleOperandOperation:operation] ||
+           [self isNoOperandOperation:operation];
+}
+
++(BOOL)isTwoOperandOperation: (NSString *)operation
+{
+    return ([operation isEqualToString:@"+"] ||
+            [operation isEqualToString:@"-"] ||
+            [operation isEqualToString:@"*"] ||
+            [operation isEqualToString:@"/"]);
+}
+
++(BOOL)isSingleOperandOperation: (NSString *)operation
+{
+    return ([operation isEqualToString:@"sin"] ||
+            [operation isEqualToString:@"cos"] ||
+            [operation isEqualToString:@"sqrt"]);
+}
+
++(BOOL)isNoOperandOperation: (NSString *)operation
+{
+    return [operation isEqualToString:@"pi"];
 }
 
 @end

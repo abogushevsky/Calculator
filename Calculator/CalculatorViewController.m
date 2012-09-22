@@ -48,7 +48,15 @@
     }
 }
 
-- (IBAction)dotPressed:(UIButton *)sender 
+- (IBAction)variablePressed:(UIButton *)sender
+{
+    NSString *variable = sender.currentTitle;
+    
+    self.display.text = variable;
+    self.userIsInTheMiddleOfEnteringANumber = YES;
+}
+
+- (IBAction)dotPressed:(UIButton *)sender
 {
     if(self.display.text.length > 0)
     {
@@ -91,7 +99,8 @@
 
 -(void)addHistoryValue: (NSString *) value
 {
-   self.historyDisplay.text = [self.historyDisplay.text stringByAppendingFormat:@"%@ ", value]; 
+   //self.historyDisplay.text = [self.historyDisplay.text stringByAppendingFormat:@"%@ ", value];
+    self.historyDisplay.text = [CalculatorBrain descriptionOfProgram:self.brain.program];
 }
 
 - (void)viewDidUnload {

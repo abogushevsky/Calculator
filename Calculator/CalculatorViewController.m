@@ -68,29 +68,6 @@
     self.userIsInTheMiddleOfEnteringANumber = YES;
 }
 
-- (IBAction)setVariableValuePressed:(UIButton *)sender
-{
-    NSString *testVariant = sender.currentTitle;
-    
-    if([testVariant isEqualToString:@"test 1"]) {
-        self.testVariablesValue = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithDouble:10.0], @"x", [NSNumber numberWithDouble:15.0], @"y", [NSNumber numberWithDouble:30.0], @"z", nil];
-    }
-    else if([testVariant isEqualToString:@"test 2"]){
-        self.testVariablesValue = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithDouble:2.0], @"x", [NSNumber numberWithDouble:3.0], @"y", [NSNumber numberWithDouble:4.0], @"z", nil];
-    }
-    else if([testVariant isEqualToString:@"test 3"]) {
-        self.testVariablesValue = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithDouble:60.0], @"x", [NSNumber numberWithDouble:22.0], @"y", [NSNumber numberWithDouble:9.0], @"z", nil];
-    }
-    
-    [self updateVariablesLabel];
-}
-
-- (IBAction)clearVariablesPressed:(UIButton *)sender
-{
-    self.testVariablesValue = nil;
-    [self updateVariablesLabel];
-}
-
 - (IBAction)undoPressed:(UIButton *)sender
 {
     if (self.userIsInTheMiddleOfEnteringANumber) {

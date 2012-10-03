@@ -20,8 +20,6 @@
 - (IBAction)operationPressed:(UIButton *)sender;
 - (IBAction)enterPressed;
 - (IBAction)variablePressed:(UIButton *)sender;
-- (IBAction)setVariableValuePressed:(UIButton *)sender;
-- (IBAction)clearVariablesPressed:(UIButton *)sender;
 - (IBAction)undoPressed:(UIButton *)sender;
 
 @end

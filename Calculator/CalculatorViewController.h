@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *display;
 @property (weak, nonatomic) IBOutlet UILabel *historyDisplay;
-@property (weak, nonatomic) IBOutlet UILabel *displayVariables;
 
 - (IBAction)digitPressed:(UIButton *)sender;
 - (IBAction)dotPressed:(UIButton *)sender;

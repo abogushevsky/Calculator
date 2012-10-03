@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0EF6B4161CB98F00E6FCEE /* MainStoryBoard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C0EF6B3161CB98F00E6FCEE /* MainStoryBoard_iPad.storyboard */; };
+		2C0EF6B7161CBE5F00E6FCEE /* CalculatorGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EF6B6161CBE5F00E6FCEE /* CalculatorGraphView.m */; };
 		E6B87D4A15769D2700DB8377 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B87D4915769D2700DB8377 /* UIKit.framework */; };
 		E6B87D4C15769D2700DB8377 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B87D4B15769D2700DB8377 /* Foundation.framework */; };
 		E6B87D4E15769D2700DB8377 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B87D4D15769D2700DB8377 /* CoreGraphics.framework */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C0EF6B3161CB98F00E6FCEE /* MainStoryBoard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryBoard_iPad.storyboard; sourceTree = "<group>"; };
+		2C0EF6B5161CBE5F00E6FCEE /* CalculatorGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorGraphView.h; sourceTree = "<group>"; };
+		2C0EF6B6161CBE5F00E6FCEE /* CalculatorGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorGraphView.m; sourceTree = "<group>"; };
 		E6B87D4515769D2700DB8377 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B87D4915769D2700DB8377 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6B87D4B15769D2700DB8377 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -82,7 +87,10 @@
 			children = (
 				E6B87D5815769D2800DB8377 /* CalculatorAppDelegate.h */,
 				E6B87D5915769D2800DB8377 /* CalculatorAppDelegate.m */,
+				2C0EF6B5161CBE5F00E6FCEE /* CalculatorGraphView.h */,
+				2C0EF6B6161CBE5F00E6FCEE /* CalculatorGraphView.m */,
 				E6B87D5B15769D2800DB8377 /* MainStoryboard.storyboard */,
+				2C0EF6B3161CB98F00E6FCEE /* MainStoryBoard_iPad.storyboard */,
 				E6BBAABC157AB825007510F5 /* CalculatorBrain.h */,
 				E6BBAABD157AB825007510F5 /* CalculatorBrain.m */,
 				E6B87D5E15769D2800DB8377 /* CalculatorViewController.h */,
@@ -156,6 +164,7 @@
 			files = (
 				E6B87D5415769D2700DB8377 /* InfoPlist.strings in Resources */,
 				E6B87D5D15769D2800DB8377 /* MainStoryboard.storyboard in Resources */,
+				2C0EF6B4161CB98F00E6FCEE /* MainStoryBoard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +179,7 @@
 				E6B87D5A15769D2800DB8377 /* CalculatorAppDelegate.m in Sources */,
 				E6B87D6015769D2800DB8377 /* CalculatorViewController.m in Sources */,
 				E6BBAABE157AB825007510F5 /* CalculatorBrain.m in Sources */,
+				2C0EF6B7161CBE5F00E6FCEE /* CalculatorGraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +256,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -257,7 +269,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

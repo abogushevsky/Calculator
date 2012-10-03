@@ -140,19 +140,8 @@
     [self updateUI];
 }
 
--(void) updateVariablesLabel
-{
-    NSString *result = @"";
-    for (NSString *key in self.testVariablesValue.allKeys) {
-        result = [NSString stringWithFormat: @"%@ %@ = %@", result, key, [self.testVariablesValue valueForKey:key]];
-    }
-    
-    self.displayVariables.text = result;
-}
-
 -(void) updateUI
 {
-    [self updateVariablesLabel];
     self.historyDisplay.text = [CalculatorBrain descriptionOfProgram:self.brain.program];
 }
 

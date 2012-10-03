@@ -13,6 +13,7 @@
 
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 @property (nonatomic, strong) CalculatorBrain *brain;
+@property (nonatomic, strong) NSDictionary *testVariablesValue;
 -(void) addHistoryValue: (NSString *) value;
 
 @end
@@ -22,6 +23,7 @@
 @synthesize historyDisplay = _historyDisplay;
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber;
 @synthesize brain = _brain;
+@synthesize testVariablesValue = _testVariablesValue;
 
 -(CalculatorBrain *) brain
 {
@@ -33,7 +35,17 @@
     return _brain;
 }
 
-- (IBAction)digitPressed:(UIButton *)sender 
+-(NSDictionary *) testVariablesValue
+{
+    if(!_testVariablesValue)
+    {
+        _testVariablesValue = [[NSDictionary alloc] init];
+    }
+    
+    return _testVariablesValue;
+}
+
+- (IBAction)digitPressed:(UIButton *)sender
 {
     NSString *digit = sender.currentTitle;
     
@@ -54,6 +66,44 @@
     
     self.display.text = variable;
     self.userIsInTheMiddleOfEnteringANumber = YES;
+}
+
+- (IBAction)setVariableValuePressed:(UIButton *)sender
+{
+    NSString *testVariant = sender.currentTitle;
+    
+    if([testVariant isEqualToString:@"test 1"]) {
+        self.testVariablesValue = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithDouble:10.0], @"x", [NSNumber numberWithDouble:15.0], @"y", [NSNumber numberWithDouble:30.0], @"z", nil];
+    }
+    else if([testVariant isEqualToString:@"test 2"]){
+        self.testVariablesValue = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithDouble:2.0], @"x", [NSNumber numberWithDouble:3.0], @"y", [NSNumber numberWithDouble:4.0], @"z", nil];
+    }
+    else if([testVariant isEqualToString:@"test 3"]) {
+        self.testVariablesValue = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithDouble:60.0], @"x", [NSNumber numberWithDouble:22.0], @"y", [NSNumber numberWithDouble:9.0], @"z", nil];
+    }
+    
+    [self updateVariablesLabel];
+}
+
+- (IBAction)clearVariablesPressed:(UIButton *)sender
+{
+    self.testVariablesValue = nil;
+    [self updateVariablesLabel];
+}
+
+- (IBAction)undoPressed:(UIButton *)sender
+{
+    if (self.userIsInTheMiddleOfEnteringANumber) {
+        self.display.text = [self.display.text substringToIndex:self.display.text.length - 1];
+        if(self.display.text.length == 0){
+            self.userIsInTheMiddleOfEnteringANumber = NO;
+        }
+    }
+    else {
+        [self.brain undo];
+    }
+    
+    [self updateUI];
 }
 
 - (IBAction)dotPressed:(UIButton *)sender
@@ -84,7 +134,8 @@
     }
     
     NSString *operation = [sender currentTitle];
-    double result = [self.brain performOperation:operation];
+    [self.brain pushOperation:operation];
+    double result = [CalculatorBrain runProgram:self.brain.program usingVariableValues:self.testVariablesValue];
     self.display.text = [NSString stringWithFormat:@"%g", result];
     
     [self addHistoryValue: operation];
@@ -92,14 +143,39 @@
 
 - (IBAction)enterPressed 
 {
-    [self.brain pushOperand:[self.display.text doubleValue]];
+    if([self.display.text isEqualToString:@"x"] ||
+       [self.display.text isEqualToString:@"y"] ||
+       [self.display.text isEqualToString:@"z"])
+    {
+        [self.brain pushVariable:self.display.text];
+    }
+    else
+    {
+        [self.brain pushOperand:[self.display.text doubleValue]];
+    }
+    
     [self addHistoryValue: self.display.text];
     self.userIsInTheMiddleOfEnteringANumber = NO;
 }
 
 -(void)addHistoryValue: (NSString *) value
 {
-   //self.historyDisplay.text = [self.historyDisplay.text stringByAppendingFormat:@"%@ ", value];
+    [self updateUI];
+}
+
+-(void) updateVariablesLabel
+{
+    NSString *result = @"";
+    for (NSString *key in self.testVariablesValue.allKeys) {
+        result = [NSString stringWithFormat: @"%@ %@ = %@", result, key, [self.testVariablesValue valueForKey:key]];
+    }
+    
+    self.displayVariables.text = result;
+}
+
+-(void) updateUI
+{
+    [self updateVariablesLabel];
     self.historyDisplay.text = [CalculatorBrain descriptionOfProgram:self.brain.program];
 }
 

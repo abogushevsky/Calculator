@@ -49,6 +49,16 @@
     [self.programStack addObject:variable];
 }
 
+-(void) pushOperation: (NSString *) operation
+{
+    [self.programStack addObject:operation];
+}
+
+-(void) undo
+{
+    [self.programStack removeLastObject];
+}
+
 - (double)performOperation:(NSString *)operation
 {
     [self.programStack addObject:operation];
@@ -72,11 +82,11 @@
         NSString *operation = topOfStack;
         
         id variableValue = [variableValues valueForKey:operation];
-        if(variableValue != nil && [variableValue isKindOfClass:[NSNumber class]])
+        if(variableValue && [variableValue isKindOfClass:[NSNumber class]])
         {
             result = [variableValue doubleValue];
         }
-        if([operation isEqualToString:@"+"])
+        else if([operation isEqualToString:@"+"])
         {
             result = [self popOperandOffProgramStack:stack usingVariableValues:variableValues] +
                      [self popOperandOffProgramStack:stack usingVariableValues:variableValues];
@@ -223,7 +233,7 @@
             result = [[NSString alloc] initWithFormat:@"%@(%@)", topOfStack, firstOperand];
         }
     }
-    else if([self isNoOperandOperation:topOfStack])
+    else //if([self isNoOperandOperation:topOfStack])
     {
         result = topOfStack;
     }

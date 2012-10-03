@@ -12,6 +12,8 @@
 
 -(void) pushOperand: (double) operand;
 -(void) pushVariable: (NSString *) variable;
+-(void) pushOperation: (NSString *) operation;
+-(void) undo;
 -(double) performOperation: (NSString *)operation;
 -(void) clear;
 

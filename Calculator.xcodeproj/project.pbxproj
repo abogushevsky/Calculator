@@ -11,6 +11,7 @@
 		2C0EF6B7161CBE5F00E6FCEE /* CalculatorGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0EF6B6161CBE5F00E6FCEE /* CalculatorGraphView.m */; };
 		2C150F11161F4BFD00A11E42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C150F10161F4BFD00A11E42 /* Default-568h@2x.png */; };
 		2C3C03361621A1740082FE70 /* CalculatorGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C03351621A1740082FE70 /* CalculatorGraphViewController.m */; };
+		2C3C03481621AE290082FE70 /* AxesDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C032E16219CDD0082FE70 /* AxesDrawer.m */; };
 		E6B87D4A15769D2700DB8377 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B87D4915769D2700DB8377 /* UIKit.framework */; };
 		E6B87D4C15769D2700DB8377 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B87D4B15769D2700DB8377 /* Foundation.framework */; };
 		E6B87D4E15769D2700DB8377 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B87D4D15769D2700DB8377 /* CoreGraphics.framework */; };
@@ -194,6 +195,7 @@
 				E6BBAABE157AB825007510F5 /* CalculatorBrain.m in Sources */,
 				2C0EF6B7161CBE5F00E6FCEE /* CalculatorGraphView.m in Sources */,
 				2C3C03361621A1740082FE70 /* CalculatorGraphViewController.m in Sources */,
+				2C3C03481621AE290082FE70 /* AxesDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +241,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -257,7 +259,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -300,7 +302,7 @@
 				E6B87D6215769D2800DB8377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E6B87D6315769D2800DB8377 /* Build configuration list for PBXNativeTarget "Calculator" */ = {
 			isa = XCConfigurationList;
@@ -309,7 +311,7 @@
 				E6B87D6515769D2800DB8377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

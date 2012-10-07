@@ -26,6 +26,8 @@
 		2C0EF6B5161CBE5F00E6FCEE /* CalculatorGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorGraphView.h; sourceTree = "<group>"; };
 		2C0EF6B6161CBE5F00E6FCEE /* CalculatorGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorGraphView.m; sourceTree = "<group>"; };
 		2C150F10161F4BFD00A11E42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2C3C032D16219CDD0082FE70 /* AxesDrawer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AxesDrawer.h; sourceTree = "<group>"; };
+		2C3C032E16219CDD0082FE70 /* AxesDrawer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AxesDrawer.m; sourceTree = "<group>"; };
 		E6B87D4515769D2700DB8377 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B87D4915769D2700DB8377 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E6B87D4B15769D2700DB8377 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,6 +90,8 @@
 		E6B87D4F15769D2700DB8377 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				2C3C032D16219CDD0082FE70 /* AxesDrawer.h */,
+				2C3C032E16219CDD0082FE70 /* AxesDrawer.m */,
 				E6B87D5815769D2800DB8377 /* CalculatorAppDelegate.h */,
 				E6B87D5915769D2800DB8377 /* CalculatorAppDelegate.m */,
 				2C0EF6B5161CBE5F00E6FCEE /* CalculatorGraphView.h */,
